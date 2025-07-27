@@ -134,7 +134,8 @@ const ChatInterface = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5001/api/chat', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const response = await axios.post(`${API_URL}/api/chat`, {
         message: inputMessage,
         sessionId: sessionId
       });
@@ -215,7 +216,8 @@ const ChatInterface = () => {
 
   const clearChat = async () => {
     try {
-      await axios.delete(`http://localhost:5001/api/chat/${sessionId}`);
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      await axios.delete(`${API_URL}/api/chat/${sessionId}`);
       setMessages([]);
     } catch (error) {
       console.error('Error clearing chat:', error);
@@ -792,7 +794,7 @@ const ChatInterface = () => {
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
               <div className="flex items-center gap-2 lg:gap-4 mb-2 text-center">
-                <span className="text-center">BY THE ORDER OF THE PEAKY FCKIN BLINDERS</span>
+                <span className="text-center">BY THE ORDER OF THE PEAKY FUCKIN BLINDERS</span>
               </div>
             </div>
           </div>
