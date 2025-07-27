@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Load environment variables
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: process.env.NODE_ENV === 'production' ? undefined : './config.env' });
 
 const app = express();
 const PORT = process.env.PORT || 5001;
